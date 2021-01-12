@@ -7,6 +7,8 @@
 
 With this package you can easily register referrals for your users/models.
 
+![Package info](https://banners.beyondco.de/Laravel%20Referral.png?theme=light&packageManager=composer+require&packageName=famdirksen%2Flaravel-referral&pattern=architect&style=style_1&description=Register+referrals+in+your+application+with+ease.&md=1&showWatermark=0&fontSize=100px&images=https%3A%2F%2Flaravel.com%2Fimg%2Flogomark.min.svg)
+
 ## Installation
 
 You can install the package via composer:
@@ -18,8 +20,7 @@ composer require famdirksen/laravel-referral
 ## Usage
 
 ```php
-$skeleton = new Famdirksen\LaravelReferral();
-echo $skeleton->echoPhrase('Hello, Famdirksen!');
+// Coming soon
 ```
 
 ## Testing

@@ -16,11 +16,14 @@
         }
     ],
     "require": {
-        "php": "^7.4|^8.0"
+        "php": "^7.4|^8.0",
+        "illuminate/database": "^6.0|^7.0|^8.0",
+        "illuminate/http": "^6.0|^7.0|^8.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.17",
         "phpunit/phpunit": "^9.5",
+        "psalm/plugin-laravel": "^1.4",
         "vimeo/psalm": "^4.3"
     },
     "autoload": {

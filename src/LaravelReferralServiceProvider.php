@@ -20,7 +20,7 @@ class LaravelReferralServiceProvider extends ServiceProvider
 
     protected function setupConfig()
     {
-        $source = realpath(__DIR__.'/../config/referral.php');
+        $source = __DIR__.'/../config/referral.php';
 
         $this->publishes([
             $source => config_path('referral.php'),
@@ -37,7 +37,7 @@ class LaravelReferralServiceProvider extends ServiceProvider
             'create_referral_accounts_table',
             'create_referrals_table',
         ] as $file) {
-            $migrationsSource = realpath(__DIR__."/../database/migrations/{$file}.php");
+            $migrationsSource = __DIR__."/../database/migrations/{$file}.php";
             $migrationsTarget = database_path("/migrations/{$timestamp}_{$file}.php");
 
             $this->publishes([

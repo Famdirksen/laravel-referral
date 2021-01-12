@@ -11,10 +11,13 @@ class Referral extends Model
     protected $table = 'referrals';
 
     // Relations
-    public function object(): MorphTo {
+    public function object(): MorphTo
+    {
         return $this->morphTo('object');
     }
-    public function referralAccount(): BelongsTo {
+
+    public function referralAccount(): BelongsTo
+    {
         return $this->belongsTo(ReferralAccount::class, 'id', 'referral_account_id');
     }
 }

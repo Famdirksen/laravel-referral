@@ -33,7 +33,7 @@ class LaravelReferralServiceProvider extends ServiceProvider
     {
         $timestamp = date('Y_m_d_His');
 
-        foreach([
+        foreach ([
             'create_referral_accounts_table',
             'create_referrals_table',
         ] as $file) {

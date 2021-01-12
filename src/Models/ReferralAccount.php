@@ -30,7 +30,8 @@ class ReferralAccount extends Model
     }
 
     // Relations
-    public function referrals() {
+    public function referrals()
+    {
         return $this->hasMany(Referral::class, 'referral_account_id', 'id');
     }
 
@@ -40,6 +41,7 @@ class ReferralAccount extends Model
         return $query->where('token', $token)
             ->exists();
     }
+
     public static function scopeByReferralToken(Builder $query, $token)
     {
         return $query->where('token', $token)
@@ -47,15 +49,17 @@ class ReferralAccount extends Model
     }
 
     // Methods
-    public function getReferralLink($link = null) {
-        if($link) {
+    public function getReferralLink($link = null)
+    {
+        if ($link) {
             return $link.'?r='.$this->getReferralToken();
         }
 
         return url('/?r='.$this->getReferralToken());
     }
 
-    public function getReferralToken() {
+    public function getReferralToken()
+    {
         return $this->token;
     }
 

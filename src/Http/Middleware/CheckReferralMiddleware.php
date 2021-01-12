@@ -13,13 +13,13 @@ class CheckReferralMiddleware
     {
         $referralCookieName = config('referral.cookie_name');
 
-        if ($request->hasCookie($referralCookieName) && !config('referral.overwrite_previous_referral', false)) {
+        if ($request->hasCookie($referralCookieName) && ! config('referral.overwrite_previous_referral', false)) {
             // Return next action when there is a referral cookie set
             return $next($request);
         }
 
         if (($ref = $request->query('r')) && $referralAccount = ReferralAccount::byReferralToken($ref)) {
-            if(!$request->hasCookie($referralCookieName) || $request->cookie($referralCookieName) !== $ref) {
+            if (! $request->hasCookie($referralCookieName) || $request->cookie($referralCookieName) !== $ref) {
                 // Register cookie as link-visited
                 event(new ReferralLinkVisitEvent($referralAccount));
             }

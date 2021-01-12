@@ -17,7 +17,7 @@ trait HandleReferralTrait
         });
     }
 
-    public function toReferralIfNeededBasedOnCookie()
+    public function toReferralIfNeededBasedOnCookie(): void
     {
         // Check if there is a cookie set
         $referralCookieName = config('referral.cookie_name');

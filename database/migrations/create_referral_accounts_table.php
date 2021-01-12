@@ -11,7 +11,7 @@ class CreateReferralAccountsTable extends Migration
      */
     public function up()
     {
-        Schema::table('referral_accounts', function (Blueprint $table) {
+        Schema::create('referral_accounts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->morphs('object');
             $table->string('name');

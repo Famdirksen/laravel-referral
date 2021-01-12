@@ -4,10 +4,11 @@ namespace Famdirksen\LaravelReferral\Traits;
 
 use Famdirksen\LaravelReferral\Models\ReferralAccount;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 trait CanReferralTrait
 {
-    public function makeReferralAccount(string $name)
+    public function makeReferralAccount(string $name): ReferralAccount
     {
         /** @var Model $this */
 
@@ -22,7 +23,7 @@ trait CanReferralTrait
         return $referralAccount;
     }
 
-    public function referralAccounts()
+    public function referralAccounts(): MorphMany
     {
         /** @var Model $this */
         return $this->morphMany(ReferralAccount::class, 'object');

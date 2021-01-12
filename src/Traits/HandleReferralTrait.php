@@ -33,6 +33,7 @@ trait HandleReferralTrait
 
     public function toReferral(ReferralAccount $referralAccount): Referral
     {
+        //todo - register only once per referral_account
         $referral = new Referral;
 
         $referral->object_type = get_class($this);

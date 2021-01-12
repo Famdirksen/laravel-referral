@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Skeleton\Tests;
+namespace Famdirksen\LaravelReferral\Tests;
 
 use PHPUnit\Framework\TestCase;
 

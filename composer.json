@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_name/:package_name",
-    "description": ":package_description",
+    "name": "famdirksen/laravel-referral",
+    "description": "A package for Laravel to register referrals",
     "keywords": [
-        ":vendor_name",
-        ":package_name"
+        "famdirksen",
+        "laravel-referral"
     ],
-    "homepage": "https://github.com/:vendor_name/:package_name",
+    "homepage": "https://github.com/famdirksen/laravel-referral",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
-            "homepage": ":author_homepage",
+            "name": "Robin Dirksen",
+            "email": "robin@famdirksen.nl",
+            "homepage": "https://famdirksen.nl",
             "role": "Developer"
         }
     ],
@@ -25,12 +25,19 @@
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\Skeleton\\": "src"
+            "Famdirksen\\LaravelReferral\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Spatie\\Skeleton\\Tests\\": "tests"
+            "Famdirksen\\LaravelReferral\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Famdirksen\\LaravelReferral\\LaravelReferralServiceProvider"
+            ]
         }
     },
     "scripts": {
@@ -43,15 +50,5 @@
         "sort-packages": true
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "funding": [
-        {
-            "type": "github",
-            "url": "https://github.com/sponsors/:vendor_name"
-        },
-        {
-            "type": "other",
-            "url": ":author_homepage"
-        }
-    ]
+    "prefer-stable": true
 }

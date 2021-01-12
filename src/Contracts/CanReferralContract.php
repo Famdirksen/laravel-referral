@@ -9,5 +9,5 @@ interface CanReferralContract
 {
     public function makeReferralAccount(string $name): ReferralAccount;
 
-    public function referralAccounts(string $name): MorphMany;
+    public function referralAccounts(): MorphMany;
 }

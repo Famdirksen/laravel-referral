@@ -1,6 +1,6 @@
 {
     "name": "famdirksen/laravel-referral",
-    "description": "A package for Laravel to register referrals",
+    "description": "A package for Laravel to register referrals with ease.",
     "keywords": [
         "famdirksen",
         "laravel-referral"

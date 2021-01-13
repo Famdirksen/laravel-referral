@@ -27,6 +27,10 @@ trait HandleReferralTrait
             if ($referralAccount = ReferralAccount::byReferralToken($referredToken)) {
                 // Register the model for the referralToken
                 $this->toReferral($referralAccount);
+
+                if(config('referral.clear_cookie_on_referral', false)) {
+                    Cookie::queue(Cookie::forget($referralCookieName));
+                }
             }
         }
     }

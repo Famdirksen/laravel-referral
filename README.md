@@ -81,8 +81,23 @@ class Kernel extends HttpKernel
     
     //
 }
-
 ```
+
+Get all referralAccounts for the current authenticated user:
+```php
+$user = auth()->user();
+$user->referralAccounts();
+```
+
+## Configuration
+
+| Key | Description |
+|---|---|
+| `overwrite_previous_referral` | When a user is redirected multiple times, overwrite the previous referral. |
+| `code_length` | The length in random characters a referral token needs to be. |
+| `clear_cookie_on_referral` | Remove the cookie, so it's handled only once. |
+| `cookie_name` | The name that will be used in the referral cookie registration. |
+| `cookie_duration` | Needs to be an instance of `Famdirksen\LaravelReferral\Contracts\ReferralCookieDurationContract`. |
 
 ## Testing
 

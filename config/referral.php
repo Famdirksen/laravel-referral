@@ -9,4 +9,12 @@ return [
 
     // Referral cookie name
     'cookie_name' => 'referral', //note, when you change this, all previous referrals will be invalid
+
+    // Clear the cookie when the referral is handled.
+    'clear_cookie_on_referral' => false,
+
+    // Cookie duration
+    'cookie_duration' => \Famdirksen\LaravelReferral\Duration\CookieDurationForever::class,
+    //'cookie_duration' => \Famdirksen\LaravelReferral\Duration\CookieDurationYear::class,
+    //'cookie_duration' => \Famdirksen\LaravelReferral\Duration\CookieDurationMonth::class,
 ];

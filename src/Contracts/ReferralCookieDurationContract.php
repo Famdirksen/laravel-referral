@@ -2,6 +2,7 @@
 
 namespace Famdirksen\LaravelReferral\Contracts;
 
-interface ReferralCookieDurationContract {
+interface ReferralCookieDurationContract
+{
     public static function getMinutesToStore(): int;
 }

@@ -19,8 +19,69 @@ composer require famdirksen/laravel-referral
 
 ## Usage
 
+This example shows an users (`App\Models\User`) who can have multiple `referralAccounts`. Based on orders (`App\Models\Order`) made in the system it will register the referral for the referral account.
+
+Add the `CanReferralContract` & `CanReferralTrait` in `App\Models\User`;
 ```php
-// Coming soon
+<?php
+
+namespace App\Models;
+
+use Famdirksen\LaravelReferral\Contracts\CanReferralContract;
+use Famdirksen\LaravelReferral\Traits\CanReferralTrait;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable implements CanReferralContract
+{
+    use CanReferralTrait;
+    
+    //
+}
+```
+
+Add the `HandleReferralContract` & `HandleReferralTrait` in `App\Models\Order`;
+```php
+<?php
+
+namespace App;
+
+use Famdirksen\LaravelReferral\Contracts\HandleReferralContract;
+use Famdirksen\LaravelReferral\Traits\HandleReferralTrait;
+use Illuminate\Database\Eloquent\Model;
+
+class Order extends Model implements HandleReferralContract
+{
+    use HandleReferralTrait;
+    
+    //
+}
+```
+
+Last, you need to register the middleware that's keeping track of the referrals.
+
+Add the `CheckReferralMiddleware` to `App\Http\Kernel`:
+```php
+<?php
+
+namespace App\Http;
+
+use Illuminate\Foundation\Http\Kernel as HttpKernel;
+
+class Kernel extends HttpKernel
+{
+    protected $middlewareGroups = [
+        'web' => [
+            //
+            
+            \Famdirksen\LaravelReferral\Http\Middleware\CheckReferralMiddleware::class,
+            
+            //
+        ],
+    ];
+    
+    //
+}
+
 ```
 
 ## Testing

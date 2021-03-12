@@ -26,6 +26,7 @@ class CheckReferralMiddleware
             }
 
             $cookieDuration = config('referral.cookie_duration');
+            $cookieDuration = new $cookieDuration();
 
             if (! $cookieDuration instanceof ReferralCookieDurationContract) {
                 throw new \Exception('Invalid `cookie_duration` class defined in configuration.');

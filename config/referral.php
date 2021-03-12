@@ -14,7 +14,7 @@ return [
     'clear_cookie_on_referral' => false,
 
     // Cookie duration
-    'cookie_duration' => \Famdirksen\LaravelReferral\Duration\CookieDurationForever::class,
-    //'cookie_duration' => \Famdirksen\LaravelReferral\Duration\CookieDurationYear::class,
-    //'cookie_duration' => \Famdirksen\LaravelReferral\Duration\CookieDurationMonth::class,
+    'cookie_duration' => Famdirksen\LaravelReferral\Duration\CookieDurationForever::class,
+    //'cookie_duration' => Famdirksen\LaravelReferral\Duration\CookieDurationYear::class,
+    //'cookie_duration' => Famdirksen\LaravelReferral\Duration\CookieDurationMonth::class,
 ];

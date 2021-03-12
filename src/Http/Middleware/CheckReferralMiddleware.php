@@ -32,7 +32,7 @@ class CheckReferralMiddleware
             }
 
             return redirect($request->fullUrl())
-                ->withCookie(cookie()->make($referralCookieName, $ref, $cookieDuration::getMinutesToStore()));
+                ->withCookie(cookie()->make($referralCookieName, $ref, (new $cookieDuration)->getMinutesToStore()));
         }
 
         return $next($request);

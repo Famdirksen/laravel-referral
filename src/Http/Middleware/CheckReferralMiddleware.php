@@ -37,7 +37,7 @@ class CheckReferralMiddleware
                     cookie()->make($referralCookieName, $ref, (new $cookieDuration)->getMinutesToStore())
                 );
 
-            foreach(config('referral.cookie_domains', []) as $cookieDomain) {
+            foreach (config('referral.cookie_domains', []) as $cookieDomain) {
                 $redirect->withCookie(
                     cookie()->make($referralCookieName, $ref, (new $cookieDuration)->getMinutesToStore(), null, $cookieDomain)
                 );

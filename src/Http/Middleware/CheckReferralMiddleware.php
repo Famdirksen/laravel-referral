@@ -32,8 +32,18 @@ class CheckReferralMiddleware
                 throw new \Exception('Invalid `cookie_duration` class defined in configuration.');
             }
 
-            return redirect($request->fullUrl())
-                ->withCookie(cookie()->make($referralCookieName, $ref, (new $cookieDuration)->getMinutesToStore()));
+            $redirect = redirect($request->fullUrl())
+                ->withCookie(
+                    cookie()->make($referralCookieName, $ref, (new $cookieDuration)->getMinutesToStore())
+                );
+
+            foreach(config('referral.cookie_domains', []) as $cookieDomain) {
+                $redirect->withCookie(
+                    cookie()->make($referralCookieName, $ref, (new $cookieDuration)->getMinutesToStore(), null, $cookieDomain)
+                );
+            }
+
+            return $redirect;
         }
 
         return $next($request);

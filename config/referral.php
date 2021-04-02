@@ -17,4 +17,7 @@ return [
     'cookie_duration' => Famdirksen\LaravelReferral\Duration\CookieDurationForever::class,
     //'cookie_duration' => Famdirksen\LaravelReferral\Duration\CookieDurationYear::class,
     //'cookie_duration' => Famdirksen\LaravelReferral\Duration\CookieDurationMonth::class,
+    
+    // The domains to set the cookie
+    'cookie_domains' => [],
 ];

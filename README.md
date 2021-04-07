@@ -98,6 +98,7 @@ $user->referralAccounts();
 | `clear_cookie_on_referral` | Remove the cookie, so it's handled only once. |
 | `cookie_name` | The name that will be used in the referral cookie registration. |
 | `cookie_duration` | Needs to be an instance of `Famdirksen\LaravelReferral\Contracts\ReferralCookieDurationContract`. |
+| `cookie_domains` | Optional, define on which domains a cookie needs to be set. |
 
 ## Testing
 

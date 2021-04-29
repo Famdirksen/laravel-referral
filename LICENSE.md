@@ -1,6 +1,6 @@
 The MIT License (MIT)
 
-Copyright (c) Famdirksen <robin@famdirksen.nl>
+Copyright (c) Famdirksen <info@famdirksen.nl>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

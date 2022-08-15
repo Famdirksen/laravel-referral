@@ -11,9 +11,9 @@ class Referral extends Model
     protected $table = 'referrals';
 
     // Relations
-    public function object(): MorphTo
+    public function referralable(): MorphTo
     {
-        return $this->morphTo('object');
+        return $this->morphTo('referralable');
     }
 
     public function referralAccount(): BelongsTo

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReferralAccountsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateReferralAccountsTable extends Migration
     {
         Schema::create('referral_accounts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->morphs('object');
+            $table->morphs('referralable');
             $table->string('name');
             $table->string('token')->unique()->index();
             $table->timestamps();
@@ -27,4 +27,4 @@ class CreateReferralAccountsTable extends Migration
     {
         Schema::dropIfExists('referral_accounts');
     }
-}
+};

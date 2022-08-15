@@ -8,8 +8,8 @@ use Illuminate\Support\Str;
 
 /**
  * @property int id
- * @property string object_type
- * @property int object_id
+ * @property string referralable_type
+ * @property int referralable_id
  * @property string name
  * @property string token
  *

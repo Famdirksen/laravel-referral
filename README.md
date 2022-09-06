@@ -35,7 +35,7 @@ class User extends Authenticatable implements CanReferralContract
 {
     use CanReferralTrait;
     
-    //
+    //...
 }
 ```
 
@@ -53,7 +53,7 @@ class Order extends Model implements HandleReferralContract
 {
     use HandleReferralTrait;
     
-    //
+    //...
 }
 ```
 
@@ -71,15 +71,15 @@ class Kernel extends HttpKernel
 {
     protected $middlewareGroups = [
         'web' => [
-            //
+            //...
             
             \Famdirksen\LaravelReferral\Http\Middleware\CheckReferralMiddleware::class,
             
-            //
+            //...
         ],
     ];
     
-    //
+    //...
 }
 ```
  ## Usage
@@ -98,7 +98,7 @@ $user->makeReferralAccount('default');
 $user = auth()->user();
 
 // get all referralAccounts for the current authenticated user
-$referralAccounts = $user->referralAccounts()->get();
+$referralAccounts = $user->referralAccounts;
 
 // get the default referral account
 $defaultReferralAccount = $referralAccounts->first();
@@ -107,7 +107,7 @@ $defaultReferralAccount = $referralAccounts->first();
 $referralLink = $defaultReferralAccount->getReferralLink();
 
 // get all referrals for a referral account
-$referrals = $defaultReferralAccount->referrals()->get();
+$referrals = $defaultReferralAccount->referrals->get();
 ```
 
 - When `Order` model hits the `created` event, 

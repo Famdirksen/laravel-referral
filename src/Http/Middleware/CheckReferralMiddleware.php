@@ -14,21 +14,36 @@ class CheckReferralMiddleware
     {
         $referralCookieName = config('referral.cookie_name');
 
-        if ($request->hasCookie($referralCookieName) && ! config('referral.overwrite_previous_referral', false)) {
+        if (
+            $request->hasCookie($referralCookieName) &&
+            ! config('referral.overwrite_previous_referral', false)
+        ) {
             // Return next action when there is a referral cookie set
             return $next($request);
         }
 
-        if (($ref = $request->query('r')) && $referralAccount = ReferralAccount::byReferralToken($ref)) {
-            if (! $request->hasCookie($referralCookieName) || $request->cookie($referralCookieName) !== $ref) {
+        if ($ref = $request->query('r')) {
+            // Check if the referral account exists, if not then just return
+            if ( ! ReferralAccount::referralTokenExists($ref)) {
+                return $next($request);
+            }
+
+            $referralAccount = ReferralAccount::byReferralToken($ref);
+
+            if ( ! $request->hasCookie($referralCookieName) || $request->cookie($referralCookieName) !== $ref) {
                 // Register cookie as link-visited
                 event(new ReferralLinkVisitEvent($referralAccount));
+            }
+
+            // if old cookie and new cookie are the same, do nothing
+            if ($request->cookie($referralCookieName) === $ref) {
+                return $next($request);
             }
 
             $cookieDuration = config('referral.cookie_duration');
             $cookieDuration = new $cookieDuration();
 
-            if (! $cookieDuration instanceof ReferralCookieDurationContract) {
+            if ( ! $cookieDuration instanceof ReferralCookieDurationContract) {
                 throw new \Exception('Invalid `cookie_duration` class defined in configuration.');
             }
 
@@ -39,7 +54,9 @@ class CheckReferralMiddleware
 
             foreach (config('referral.cookie_domains', []) as $cookieDomain) {
                 $redirect->withCookie(
-                    cookie()->make($referralCookieName, $ref, (new $cookieDuration)->getMinutesToStore(), null, $cookieDomain)
+                    cookie()->make(
+                        $referralCookieName, $ref, (new $cookieDuration)->getMinutesToStore(), null, $cookieDomain
+                    )
                 );
             }
 

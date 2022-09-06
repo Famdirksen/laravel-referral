@@ -14,8 +14,8 @@ trait CanReferralTrait
 
         $referralAccount = new ReferralAccount;
 
-        $referralAccount->object_type = get_class($this);
-        $referralAccount->object_id = $this->getKey();
+        $referralAccount->referralable_type = get_class($this);
+        $referralAccount->referralable_id = $this->getKey();
         $referralAccount->name = $name;
 
         $referralAccount->save();
@@ -25,8 +25,7 @@ trait CanReferralTrait
 
     public function referralAccounts(): MorphMany
     {
-        /** @var Model $this */
-        return $this->morphMany(ReferralAccount::class, 'object');
+        return $this->morphMany(ReferralAccount::class, 'referralable');
     }
 
     //todo - hasManyThrough relation to the referrals

@@ -82,12 +82,38 @@ class Kernel extends HttpKernel
     //
 }
 ```
+ ## Usage
 
-Get all referralAccounts for the current authenticated user:
+- Create a referral account for the user
 ```php
 $user = auth()->user();
-$user->referralAccounts();
+
+// create a referral account for the user
+// `name` parameter is used for many type of referral systems
+$user->makeReferralAccount('default');
 ```
+
+- Get all referral accounts, referral link, and referrals for a referral account
+```php
+$user = auth()->user();
+
+// get all referralAccounts for the current authenticated user
+$referralAccounts = $user->referralAccounts()->get();
+
+// get the default referral account
+$defaultReferralAccount = $referralAccounts->first();
+
+// get the referral link for the default referral account
+$referralLink = $defaultReferralAccount->getReferralLink();
+
+// get all referrals for a referral account
+$referrals = $defaultReferralAccount->referrals()->get();
+```
+
+- When `Order` model hits the `created` event, 
+it will register the referral for the referral account based on the 
+`referral` cookie.
+
 
 ## Configuration
 

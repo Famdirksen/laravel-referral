@@ -40,8 +40,8 @@ trait HandleReferralTrait
         //todo - register only once per referral_account
         $referral = new Referral;
 
-        $referral->object_type = get_class($this);
-        $referral->object_id = $this->getKey();
+        $referral->referralable_type = get_class($this);
+        $referral->referralable_id = $this->getKey();
         $referral->referral_account_id = $referralAccount->id;
 
         $referral->save();
